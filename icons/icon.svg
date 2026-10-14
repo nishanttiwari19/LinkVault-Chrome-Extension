@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="vaultGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.18" />
+    </filter>
+  </defs>
+  <!-- Background squircle -->
+  <rect x="6" y="6" width="116" height="116" rx="26" fill="url(#vaultGrad)" />
+  <!-- Inner subtle glow -->
+  <rect x="8" y="8" width="112" height="56" rx="24" fill="#ffffff" opacity="0.12" />
+  <!-- Shackle -->
+  <path d="M42 58 V42 C42 30 52 20 64 20 C76 20 86 30 86 42 V58" 
+        fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
+  <!-- Vault / Lock body -->
+  <rect x="29" y="54" width="70" height="52" rx="12" fill="#ffffff" filter="url(#shadow)" />
+  <!-- Keyhole / Chain link symbol inside -->
+  <circle cx="64" cy="76" r="8" fill="#1e40af" />
+  <path d="M60 78 L58 92 H70 L68 78 Z" fill="#1e40af" />
+</svg>

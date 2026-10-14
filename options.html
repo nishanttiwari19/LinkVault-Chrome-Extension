@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkVault - Settings & Profile Manager</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-layout">
+    <!-- Sidebar / Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>LinkVault</h1>
+          <span class="version-tag">v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#standard-profiles" class="nav-item active" data-tab="standard-profiles">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Standard Profiles</span>
+        </a>
+        <a href="#custom-links" class="nav-item" data-tab="custom-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          <span>Custom Links</span>
+        </a>
+        <a href="#autofill-settings" class="nav-item" data-tab="autofill-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          <span>Autofill Behavior</span>
+        </a>
+        <a href="#backup-restore" class="nav-item" data-tab="backup-restore">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Backup & Export</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="storage-indicator">
+          <div class="storage-label">Storage Location</div>
+          <div class="storage-value">Chrome Local Storage</div>
+          <div class="privacy-note">Zero network requests. 100% private & offline.</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Standard Profiles Section -->
+      <section id="standard-profiles" class="content-section active">
+        <div class="section-header">
+          <div>
+            <h2>Standard Profiles</h2>
+            <p class="section-desc">These are the primary links requested by job portals, internships, and university registration forms.</p>
+          </div>
+          <button id="saveStandardProfilesBtn" class="btn-primary">
+            <span>Save All Profiles</span>
+          </button>
+        </div>
+
+        <div class="card-grid" id="standardProfilesGrid">
+          <!-- Populated by options.js -->
+        </div>
+      </section>
+
+      <!-- Custom Links Section -->
+      <section id="custom-links" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Custom Links</h2>
+            <p class="section-desc">Add unique profile URLs (e.g. Behance, Dribbble, Medium, Kaggle, Twitter/X, Discord) with custom autofill keywords.</p>
+          </div>
+          <button id="openNewCustomBtn" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Custom Link</span>
+          </button>
+        </div>
+
+        <div id="customLinksList" class="custom-links-container">
+          <!-- Populated by options.js -->
+        </div>
+      </section>
+
+      <!-- Autofill Behavior Section -->
+      <section id="autofill-settings" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Autofill Settings</h2>
+            <p class="section-desc">Fine-tune how LinkVault interacts with web pages when you click "Autofill Current Page".</p>
+          </div>
+          <button id="savePreferencesBtn" class="btn-primary">
+            <span>Save Preferences</span>
+          </button>
+        </div>
+
+        <div class="settings-card">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="prefOverwrite" class="setting-title">Overwrite Existing Values</label>
+              <p class="setting-description">When enabled, LinkVault will replace existing text in matching input fields. When disabled, non-empty fields will always be preserved.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="prefOverwrite">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="prefHighlight" class="setting-title">Visual Highlight on Autofill</label>
+              <p class="setting-description">Briefly animate autofilled inputs on the webpage with a soft blue pulse so you can visually confirm what changed.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="prefHighlight" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="prefToast" class="setting-title">Webpage Summary Toast</label>
+              <p class="setting-description">Show a subtle notification pill at the bottom-right of the webpage displaying the count of filled fields.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="prefToast" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Matching Rules Guide -->
+        <div class="info-card">
+          <h3 class="info-title">How LinkVault Matches Fields</h3>
+          <ul class="info-list">
+            <li><strong>LinkedIn:</strong> Scans for labels or placeholders containing "LinkedIn", "LinkedIn URL", "LinkedIn Profile".</li>
+            <li><strong>GitHub:</strong> Scans for "GitHub", "Git Profile", "GitHub URL", "Repository".</li>
+            <li><strong>Portfolio:</strong> Scans for "Portfolio", "Portfolio Website", "Work Samples", "Projects URL".</li>
+            <li><strong>Resume:</strong> Scans for "Resume", "CV", "Curriculum Vitae", "Resume URL", "Drive URL".</li>
+            <li><strong>Personal Website:</strong> Matches generic "Website", "Homepage", "Personal Site" ONLY if specific platform fields are not specified.</li>
+            <li><strong>Safety Guarantee:</strong> Sensitive fields (passwords, credit cards, SSN, OTP, hidden inputs) are strictly ignored and never filled. Unknown fields are never filled with guesses.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Backup & Restore Section -->
+      <section id="backup-restore" class="content-section">
+        <div class="section-header">
+          <div>
+            <h2>Backup, Export & Restore</h2>
+            <p class="section-desc">Download a complete JSON backup of your saved links or restore them on another machine.</p>
+          </div>
+        </div>
+
+        <div class="backup-grid">
+          <div class="backup-card">
+            <div class="backup-card-header">
+              <div class="backup-icon export-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              </div>
+              <div>
+                <h3>Export Backup</h3>
+                <p>Save all profile links, custom links, and settings as a JSON file.</p>
+              </div>
+            </div>
+            <button id="exportJsonBtn" class="btn-secondary">Export to JSON</button>
+          </div>
+
+          <div class="backup-card">
+            <div class="backup-card-header">
+              <div class="backup-icon import-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              </div>
+              <div>
+                <h3>Import Backup</h3>
+                <p>Restore or merge links from a previously exported LinkVault JSON file.</p>
+              </div>
+            </div>
+            <input type="file" id="importFileInput" accept=".json" class="hidden">
+            <button id="importJsonBtn" class="btn-secondary">Select JSON File...</button>
+          </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="danger-card">
+          <div class="danger-header">
+            <h3>Danger Zone</h3>
+            <p>Clear all saved links and restore LinkVault to default empty state.</p>
+          </div>
+          <button id="resetAllDataBtn" class="btn-danger">Clear All Links & Data</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Custom Link Modal -->
+  <div id="customModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="customModalTitle">Add Custom Link</h3>
+        <button id="closeCustomModalBtn" class="modal-close">&times;</button>
+      </div>
+      <form id="customLinkForm" class="modal-form">
+        <input type="hidden" id="customLinkId">
+        
+        <div class="form-group">
+          <label for="customLabel">Label / Platform Name <span class="required">*</span></label>
+          <input type="text" id="customLabel" class="form-input" placeholder="e.g. Behance, Twitter / X, Dribbble" required>
+        </div>
+
+        <div class="form-group">
+          <label for="customUrl">URL <span class="required">*</span></label>
+          <input type="url" id="customUrl" class="form-input" placeholder="https://..." required spellcheck="false">
+          <span class="field-error hidden" id="customUrlError">Please enter a valid URL.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="customKeywords">Autofill Keywords <span class="hint">(comma separated)</span></label>
+          <input type="text" id="customKeywords" class="form-input" placeholder="e.g. behance, portfolio behance, behance url">
+          <span class="hint-text">Keywords used to recognize this field when scanning job application forms.</span>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelCustomModalBtn" class="btn-ghost">Cancel</button>
+          <button type="submit" class="btn-primary">Save Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="optionsToast" class="options-toast hidden">
+    <span id="optionsToastIcon">✓</span>
+    <span id="optionsToastMessage">Changes saved successfully!</span>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

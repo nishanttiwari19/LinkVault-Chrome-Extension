@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkVault Test Form - Job & Registration Application</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 14.5px;
+      margin-top: 6px;
+    }
+
+    .instructions-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: #1e3a8a;
+    }
+
+    .instructions-card strong {
+      color: #1d4ed8;
+    }
+
+    .instructions-card ol {
+      margin-left: 20px;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.03);
+    }
+
+    .form-section-title {
+      font-size: 16px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .required {
+      color: #dc2626;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-family: inherit;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .input-hint {
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .test-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 24px;
+    }
+
+    button.test-btn {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    button.test-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .submit-btn {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s ease;
+    }
+
+    .submit-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+    }
+
+    .skip-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Candidate Application & Registration Form</h1>
+      <p>Official mock form to test LinkVault Smart Autofill & One-Click Copy</p>
+    </header>
+
+    <div class="instructions-card">
+      <strong>How to test LinkVault on this form:</strong>
+      <ol>
+        <li>Click the LinkVault extension icon in your Chrome toolbar.</li>
+        <li>Make sure your profile links (LinkedIn, GitHub, Website, Portfolio, Resume) are configured.</li>
+        <li>Click <strong>"Autofill Current Page"</strong> in the LinkVault popup.</li>
+        <li>Watch the matching fields fill instantly with glowing blue feedback!</li>
+        <li>Notice that sensitive fields (Password, Security code) and unrelated fields (Name, Email) are safely skipped!</li>
+      </ol>
+    </div>
+
+    <div class="test-actions">
+      <button class="test-btn" id="prefillOneFieldBtn">Pre-fill LinkedIn (Test Overwrite Protection)</button>
+      <button class="test-btn" id="clearFormBtn">Clear All Form Inputs</button>
+    </div>
+
+    <form class="form-card" id="mockApplicationForm" onsubmit="event.preventDefault(); alert('Form submitted! (In real usage, LinkVault never auto-submits)');">
+      <!-- Unrelated Personal Info -->
+      <div class="form-section-title">Personal Information <span class="skip-badge">Should NOT Autofill Links</span></div>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="applicant_name">Full Legal Name <span class="required">*</span></label>
+          <input type="text" id="applicant_name" name="fullname" placeholder="e.g. Alex Morgan" autocomplete="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="applicant_email">Email Address <span class="required">*</span></label>
+          <input type="email" id="applicant_email" name="email" placeholder="alex@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="applicant_phone">Phone Number</label>
+          <input type="tel" id="applicant_phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+        </div>
+
+        <!-- Sensitive field to verify security -->
+        <div class="form-group">
+          <label for="portal_password">Account Password <span class="skip-badge">Sensitive - Must Skip</span></label>
+          <input type="password" id="portal_password" name="password" placeholder="••••••••••••">
+        </div>
+      </div>
+
+      <!-- Profile Links Section (Target for LinkVault) -->
+      <div class="form-section-title">Online Profiles & Portfolios <span class="tag-badge">LinkVault Target Fields</span></div>
+
+      <div class="form-grid">
+        <!-- LinkedIn -->
+        <div class="form-group">
+          <label for="field_linkedin">LinkedIn Profile URL <span class="tag-badge">LinkedIn</span></label>
+          <input type="url" id="field_linkedin" name="linkedin_profile_url" placeholder="https://linkedin.com/in/username">
+          <span class="input-hint">Matched by label "LinkedIn Profile URL" & input name</span>
+        </div>
+
+        <!-- GitHub -->
+        <div class="form-group">
+          <label for="field_github">GitHub Profile / Repositories <span class="tag-badge">GitHub</span></label>
+          <input type="url" id="field_github" name="github_url" placeholder="https://github.com/username">
+          <span class="input-hint">Matched by label "GitHub Profile"</span>
+        </div>
+
+        <!-- Personal Website -->
+        <div class="form-group">
+          <label for="field_website">Personal Website / Homepage <span class="tag-badge">Website</span></label>
+          <input type="url" id="field_website" name="personal_website" placeholder="https://yourwebsite.com">
+          <span class="input-hint">Matched by "Personal Website / Homepage"</span>
+        </div>
+
+        <!-- Portfolio -->
+        <div class="form-group">
+          <label for="field_portfolio">Portfolio / Work Samples <span class="tag-badge">Portfolio</span></label>
+          <input type="url" id="field_portfolio" name="portfolio_url" placeholder="https://portfolio.dev">
+          <span class="input-hint">Matched by "Portfolio / Work Samples"</span>
+        </div>
+
+        <!-- Resume -->
+        <div class="form-group">
+          <label for="field_resume">Resume / CV Link <span class="tag-badge">Resume</span></label>
+          <input type="url" id="field_resume" name="resume_cv_url" placeholder="https://drive.google.com/your-resume.pdf">
+          <span class="input-hint">Direct link to hosted resume or CV</span>
+        </div>
+
+        <!-- Instagram -->
+        <div class="form-group">
+          <label for="field_instagram">Instagram Profile <span class="tag-badge">Instagram</span></label>
+          <input type="url" id="field_instagram" name="instagram_profile" placeholder="https://instagram.com/username">
+          <span class="input-hint">Matched by "Instagram Profile"</span>
+        </div>
+
+        <!-- Custom link (Twitter / X) -->
+        <div class="form-group full-width">
+          <label for="field_twitter">Twitter / X Profile <span class="tag-badge">Custom Link Target</span></label>
+          <input type="url" id="field_twitter" name="twitter_profile" placeholder="https://x.com/username">
+          <span class="input-hint">Matched if you add a custom link for "Twitter" or "X"</span>
+        </div>
+
+        <!-- Cover Letter (Unrelated Textarea) -->
+        <div class="form-group full-width">
+          <label for="cover_letter">Brief Introduction / Cover Note <span class="skip-badge">Unrelated</span></label>
+          <textarea id="cover_letter" name="cover_letter" rows="3" placeholder="Tell us why you are interested in this position..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Mock Application</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('prefillOneFieldBtn').addEventListener('click', () => {
+      const field = document.getElementById('field_linkedin');
+      field.value = 'https://linkedin.com/in/already-typed-value';
+      field.style.background = '#fef3c7';
+      alert('LinkedIn field is now pre-filled with an existing value. Try running Autofill with "Overwrite existing values" turned OFF vs ON in LinkVault!');
+    });
+
+    document.getElementById('clearFormBtn').addEventListener('click', () => {
+      document.getElementById('mockApplicationForm').reset();
+      const inputs = document.querySelectorAll('input, textarea');
+      inputs.forEach(i => i.style.background = '#ffffff');
+    });
+  </script>
+</body>
+</html>
