@@ -13,6 +13,25 @@ LinkVault is a lightweight Chrome extension designed to help users manage their 
 * **Import & Export:** Back up and restore your saved links using JSON.
 * **Lightweight:** Built with HTML, CSS, and JavaScript using Chrome Extension Manifest V3.
 
+* ## 📸 Screenshots
+
+### Extension Popup
+
+![LinkVault Extension Popup](screenshots/Screenshot%202026-10-14%20154758.png)
+
+### Extension Interface
+
+![LinkVault Extension Interface](screenshots/Screenshot%202026-10-14%20154841.png)
+
+### Additional View
+
+![LinkVault Additional View](screenshots/Screenshot%202026-10-14%20154905.png)
+
+### Settings and Features
+
+![LinkVault Settings and Features](screenshots/Screenshot%202026-10-14%20154924.png)
+
+
 ## 🛠️ Tech Stack
 
 * HTML5
